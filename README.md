@@ -1,10 +1,5 @@
 # Báo cáo Gradle Dependency Caching
 
-- Họ tên: Đặng Khánh An
-- Mã sinh viên: PTIT070
-- Môn học: IT209
-- Workflow: `.github/workflows/ci.yml` tại gốc repository.
-
 ## Cấu hình
 
 Bước `actions/setup-java@v5` sử dụng Java 17, Temurin và `cache: 'gradle'`.
