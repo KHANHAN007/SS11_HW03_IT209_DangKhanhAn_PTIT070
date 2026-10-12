@@ -15,15 +15,16 @@ Chưa đo trên GitHub Actions. Điền sau khi hai lần push đã hoàn tất.
 
 | Tiêu chí | Lần chạy 1 | Lần chạy 2 |
 |---|---|---|
-| Setup Java | Chưa đo | Chưa đo |
-| Run tests | Chưa đo | Chưa đo |
-| Tổng thời gian job | Chưa đo | Chưa đo |
-| Cache hit/miss | Chưa kiểm tra | Chưa kiểm tra |
-| Link Actions | Chưa có | Chưa có |
+| Setup Java | 0s | 6s |
+| Run tests | 41s | 17s |
+| Tổng thời gian job | 52s | 29s |
+| Cache hit/miss | Miss | Hit |
+| Link Actions | https://github.com/KHANHAN007/SS11_HW03_IT209_DangKhanhAn_PTIT070/actions/runs/38284180591 | https://github.com/KHANHAN007/SS11_HW03_IT209_DangKhanhAn_PTIT070/actions/runs/38284662512 |
 
 ## Log khôi phục cache
 
-Dán dòng log thực tế của lần chạy thứ hai vào đây.
+Cache restored from key: setup-java-Linux-x64-gradle-8402aa9eaa393fa7c97b1311cc3ec7fb39987da72dc261b1e2e134142232c79c
+
 
 ## Nhận xét
 
