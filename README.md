@@ -1,42 +1,31 @@
-# Spring Boot - Gradle Dependency Cache Demo
+# Báo cáo Gradle Dependency Caching
 
-Project cho bài IT209 Session 11 Exercise 3, dùng Java 17 và Gradle Wrapper.
+- Họ tên: Đặng Khánh An
+- Mã sinh viên: PTIT070
+- Môn học: IT209
+- Workflow: `.github/workflows/ci.yml` tại gốc repository.
 
-## Chạy trên Mac
+## Cấu hình
 
-```bash
-export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-chmod +x gradlew
-./gradlew test bootJar
-./gradlew bootRun
-```
+Bước `actions/setup-java@v5` sử dụng Java 17, Temurin và `cache: 'gradle'`.
 
-API: `http://localhost:8080/health`, trả JSON có `status: UP`.
+## Kết quả thực tế
 
-## Tạo repository và push lần đầu
+Chưa đo trên GitHub Actions. Điền sau khi hai lần push đã hoàn tất.
 
-Chạy tại thư mục chứa README này:
+| Tiêu chí | Lần chạy 1 | Lần chạy 2 |
+|---|---|---|
+| Setup Java | 0s | 6s |
+| Run tests | 41s | 17s |
+| Tổng thời gian job | 52s | 29s |
+| Cache hit/miss | Miss | Hit |
+| Link Actions | https://github.com/KHANHAN007/SS11_HW03_IT209_DangKhanhAn_PTIT070/actions/runs/38284180591 | https://github.com/KHANHAN007/SS11_HW03_IT209_DangKhanhAn_PTIT070/actions/runs/38284662512 |
 
-```bash
-git init
-git branch -M main
-git add .
-git commit -m "init: Spring Boot with Gradle caching CI"
-gh auth switch -u KHANHAN007
-gh repo create KHANHAN007/SS11_HW03_IT209_DangKhanhAn_PTIT070 --public --source . --remote origin --push
-```
+## Log khôi phục cache
 
-Vào GitHub Actions, chờ job đầu tiên thành công hoàn toàn để cache được lưu.
+Cache restored from key: setup-java-Linux-x64-gradle-8402aa9eaa393fa7c97b1311cc3ec7fb39987da72dc261b1e2e134142232c79c
 
-## Push lần thứ hai
 
-```bash
-git commit --allow-empty -m "ci: verify Gradle cache restoration"
-git push
-```
+## Nhận xét
 
-Trong Actions, ghi lại thời gian Setup Java, Run tests và tổng job cho cả hai lần. Tìm thông báo khôi phục cache ở lần hai.
-
-Điền kết quả thực tế vào `homework/session_11/ex3/report.md`, sau đó commit và push báo cáo.
-
-Workflow cần nằm ở `.github/workflows/ci.yml` tại gốc repository để GitHub tự chạy. Không chuyển toàn bộ project vào một thư mục con sau khi tạo repository.
+Cache tái sử dụng dependency đã tải. So sánh thời gian thực tế của hai lần chạy; thời gian job còn phụ thuộc runner và chi phí khôi phục cache.
