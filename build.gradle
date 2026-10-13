@@ -25,6 +25,14 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+    javaLauncher = javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(
+            providers.gradleProperty('testJavaVersion').getOrElse('17').toInteger()
+        )
+    }
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+    }
 }
 
 tasks.named('bootJar') {
